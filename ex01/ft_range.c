@@ -15,8 +15,9 @@
 
 int	*ft_range(int min, int max)
 {
-	int		i;
-	char	*tab;
+	int	i;
+	int	*tab;
+	int	last;
 
 	if (min >= max)
 		return (0);

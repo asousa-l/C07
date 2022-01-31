@@ -13,29 +13,32 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	*ft_ultimate_range(int **range, int min, int max)
+int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	last;
 	int	i;
+	int	*tab;
 
 	if (min >= max)
 	{
-		*range = NULL;
+		*range = 0;
 		return (0);
 	}
 	last = max - min - 1;
-	*range = malloc(last * sizeof(int));
-	if (!*range)
+	tab = malloc(last * sizeof(int));
+	if (tab == NULL)
 	{
+		*range = 0;
 		return (-1);
 	}
+	*range = tab;
 	i = 0;
 	while (i <= last)
 	{
-		*range[i] = min + i;
+		tab[i] = min + i;
 		i++;
 	}
-	return (i);
+	return (last + i);
 }
 /*
 void	debug_dump_array(int numbers[], int size)
@@ -61,12 +64,12 @@ int	main(void)
 	int	min;
 	int	max;
 	int	*range;
-	int	bound;
+	int	last;
 
 	min = 5;
 	max = 10;
-	bound = ft_ultimate_range(&range, min, max);
-	printf("min = %d, max = %d -> (bound = %d) ", min, max, bound);
+	last = ft_ultimate_range(&range, min, max);
+	printf("min = %d, max = %d -> (last = %d) ", min, max, last);
 	fflush(stdout);
-	debug_dump_array(range, bound + 2);
+	debug_dump_array(range, last + 2);
 }*/

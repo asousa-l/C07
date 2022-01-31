@@ -30,12 +30,11 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*tab;
 	int		i;
 	int		j;
-	int		n;
+	int		k;
 	int		c;
 
 	i = 0;
-	j = 0;
-	n = 0;
+	k = 0;
 	c = 1;
 	while (i < size)
 		c += ft_strlen(strs[i++]) + ft_strlen(sep);
@@ -43,18 +42,19 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	i = 0;
 	while (i < size)
 	{
+		j = 0;
 		while (strs[i][j] != '\0')
-			tab[n++] = strs[i][j++];
+			tab[k++] = strs[i][j++];
 		j = 0;
 		while ((sep[j] != '\0') && (i < size -1))
-			tab[n++] = sep[j++];
-		j = 0;
+			tab[k++] = sep[j++];
+		i++;
 	}
 	tab[k] = '\0';
 	return (tab);
 }
 /*
-int		main(void)
+int	main(void)
 {
 	int		index;
 	char	**strs;
