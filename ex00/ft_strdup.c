@@ -10,15 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_str_length(char *str)
-{
-	int	c;
-
-	c = 0;
-	while (str[c] != '\0')
-		c++;
-	return (c);
-}
+#include <stdlib.h>
 
 char	*ft_strdup(char *src)
 {
@@ -26,4 +18,30 @@ char	*ft_strdup(char *src)
 	char	*dest;
 
 	i = 0;
+	while (src[i])
+		i++;
+	dest = malloc(sizeof(char) * (i + 1));
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+/*
+int		main(void)
+{
+	char	*str;
+	char	*allocated;
 
+	str = "Hello World with malloc()";
+	printf("x  : base  : $%s$ @ %p\n", str, str);
+	allocated = strdup(str);
+	printf("c  : alloc : $%s$ @ %p\n", allocated, allocated);
+	allocated = ft_strdup(str);
+	printf("ft : alloc : $%s$ @ %p\n", allocated, allocated);
+}*/

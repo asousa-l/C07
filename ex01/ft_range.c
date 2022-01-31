@@ -15,15 +15,18 @@
 
 int	*ft_range(int min, int max)
 {
-	int	last;
-	int	i;
-	int	*tab;
+	int		i;
+	char	*tab;
 
 	if (min >= max)
 		return (0);
 	last = max - min -1;
-	if ((tab = malloc(last * sizeof(int))) == NULL)
-		return (0);
+	tab = malloc(last * sizeof(int));
+	if (!tab)
+	{
+		tab = NULL;
+		return (tab);
+	}
 	i = 0;
 	while (i <= last)
 	{

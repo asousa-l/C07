@@ -1,32 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: asousa-l <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/30 18:34:52 by asousa-l          #+#    #+#             */
+/*   Updated: 2022/01/30 18:34:56 by asousa-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
-
 
 int	*ft_ultimate_range(int **range, int min, int max)
 {
 	int	last;
 	int	i;
-	int	*buffer;
 
 	if (min >= max)
 	{
-		*range = 0;
+		*range = NULL;
 		return (0);
 	}
-	last = max - min -1;
-	if ((buffer = malloc(last * sizeof(int))) == NULL)
+	last = max - min - 1;
+	*range = malloc(last * sizeof(int));
+	if (!*range)
 	{
-		*range = 0;
-		return (0);
+		return (-1);
 	}
 	i = 0;
 	while (i <= last)
 	{
-		buffer[i] = min + i;
+		*range[i] = min + i;
 		i++;
 	}
-	return (last + 1);
+	return (i);
 }
 /*
 void	debug_dump_array(int numbers[], int size)
