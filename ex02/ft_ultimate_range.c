@@ -40,7 +40,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 	}
 	return (last + 1);
 }
-
+/*
 void	debug_dump_array(int numbers[], int size)
 {
 	int index;
@@ -72,4 +72,4 @@ int	main(void)
 	printf("min = %d, max = %d -> (last = %d) ", min, max, last);
 	fflush(stdout);
 	debug_dump_array(range, last + 2);
-}
+}*/
